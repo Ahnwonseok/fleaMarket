@@ -3,9 +3,11 @@
 ## 주요기능
 판매게시글 등록, 게시글 조회, 댓글달기, 좋아요, 구매하기, 구매내역 보기
 
+## 인프라 구조
+![image](https://user-images.githubusercontent.com/116478121/220061504-a04864d1-e5e3-4e6f-b9a6-8e6050b70cc1.png)
+
 ## ERD
 ![스크린샷(11)](https://user-images.githubusercontent.com/95980876/213648476-9380cb80-ee59-40e7-a66c-c0c8f28025cb.png)
-
 
 ## API 설계
 https://www.notion.so/b898a61a16594bf9af23a460289e4215?v=c40292364a6f42e3a690e3b60a95e197

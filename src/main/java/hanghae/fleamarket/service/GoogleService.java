@@ -32,22 +32,6 @@ public class GoogleService {
     private final JwtUtil jwtUtil;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-//    public ResponseEntity<Object> moveGoogleInitUrl() {
-//
-//        String authUrl = configUtils.googleInitUrl();
-//        System.out.println("authUrl: " + authUrl);
-//        URI redirectUri = null;
-//        try {
-//            redirectUri = new URI(authUrl);
-//            HttpHeaders httpHeaders = new HttpHeaders();
-//            httpHeaders.setLocation(redirectUri);
-//            return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
-//        } catch (
-//                URISyntaxException e) {
-//            e.printStackTrace();
-//            return ResponseEntity.badRequest().build();
-//        }
-//    }
 
     public String redirectGoogleLogin(String authCode){
         // HTTP 통신을 위해 RestTemplate 활용

@@ -8,7 +8,7 @@
 
 ## ERD
 ![스크린샷(11)](https://user-images.githubusercontent.com/95980876/213648476-9380cb80-ee59-40e7-a66c-c0c8f28025cb.png)
-
+![fleamarket.png](..%2F..%2F..%2F..%2F..%2FDownloads%2Ffleamarket.png)
 ## API 설계
 https://www.notion.so/b898a61a16594bf9af23a460289e4215?v=c40292364a6f42e3a690e3b60a95e197
 

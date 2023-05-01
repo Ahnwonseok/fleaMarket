@@ -72,7 +72,6 @@ public class UserController {
     @ResponseBody
     @PostMapping("/doublecheck")
     public boolean loginDoubleCheck(@RequestBody LoginDoubleCheckDto loginDoubleCheckDto){
-        log.info("실행되는가 - 컨트롤러");
         return userService.loginDoubleCheck(loginDoubleCheckDto);
     }
 
@@ -81,6 +80,7 @@ public class UserController {
     public String kakaoLogin(@RequestParam String code, HttpServletResponse response, RedirectAttributes re) throws JsonProcessingException {
         // code: 카카오 서버로부터 받은 인가 코드
         String createToken = kakaoService.kakaoLogin(code, response);
+
         // Cookie 생성 및 직접 브라우저에 Set, 서버에서 쿠키를 쿠키저장소에 넣어줌
         //키값                              밸류값 , substring(bearer과 공백을 삭제)
         Cookie cookie = new Cookie(JwtUtil.AUTHORIZATION_HEADER, createToken.substring(7));
@@ -96,8 +96,9 @@ public class UserController {
     public String kakoRedirect(){
         return "redirect:/api/products";
     }
+
     //구글 로그인 인증토큰
-    @GetMapping(value = "/logins")
+    @GetMapping(value = "/google/logins")
     public ResponseEntity<Object> moveGoogleInitUrl() {
         String authUrl = configUtils.googleInitUrl();
         URI redirectUri = null;

@@ -117,7 +117,6 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public boolean loginDoubleCheck(LoginDoubleCheckDto loginDoubleCheckDto){
-        log.info("실행되는가?");
         Optional<User> user = userRepository.findByUsername(loginDoubleCheckDto.getUsername());
         if (user.isPresent()) return true;
         else return false;

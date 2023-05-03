@@ -39,7 +39,7 @@ public class ProductController {
     //이미지업로드
     @ResponseBody
     @PostMapping(value = "/api/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> createProduct(@RequestParam MultipartFile image, ProductRequestDto dto, HttpServletRequest request) throws IOException {
+    public ProductResponseDto createProduct(@RequestParam MultipartFile image, ProductRequestDto dto, HttpServletRequest request) throws IOException {
         String imgUrl = s3Service.upload(image);
         return productService.createProduct(dto, request, imgUrl);
     }

@@ -48,7 +48,7 @@ public class ProductService {
     }
 
     @Transactional
-    public ResponseEntity<String> createProduct(ProductRequestDto dto, HttpServletRequest request, String imgUrl) {
+    public ProductResponseDto createProduct(ProductRequestDto dto, HttpServletRequest request, String imgUrl) {
         Claims claims = getClaims(request);
         String username = claims.getSubject();
         User user = findUser(username);
@@ -58,7 +58,7 @@ public class ProductService {
         Product product = dto.toEntity(user);
         productRepository.save(product);
 
-        return new ResponseEntity<>("게시글 작성 완료", HttpStatus.OK);
+        return new ProductResponseDto(product);
     }
 
     //게시글 수정

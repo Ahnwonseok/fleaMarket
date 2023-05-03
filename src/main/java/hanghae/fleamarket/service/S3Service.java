@@ -6,6 +6,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +28,7 @@ public class S3Service {
     @Value("${cloud.aws.credentials.secretKey}")
     private String secretKey;
 
-    @Value("hanghae-fleamarket2")
+    @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
     @Value("${cloud.aws.region.static}")
@@ -43,12 +44,14 @@ public class S3Service {
                 .build();
     }
 
-    public String upload(MultipartFile file) throws IOException {
-        String uuid = UUID.randomUUID().toString();
-        String fileName = file.getOriginalFilename() + uuid;
+    public String upload(MultipartFile multipartFile) throws IOException {
+        String s3FileName = UUID.randomUUID() + "-" + multipartFile.getOriginalFilename();
+        ObjectMetadata objMeta = new ObjectMetadata();
+        objMeta.setContentType(multipartFile.getContentType());
+        objMeta.setContentLength(multipartFile.getInputStream().available());
 
-        s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
-        return s3Client.getUrl(bucket, fileName).toString();
+        s3Client.putObject(bucket, s3FileName, multipartFile.getInputStream(), objMeta);
+
+        return s3Client.getUrl(bucket, s3FileName).toString();
     }
 }

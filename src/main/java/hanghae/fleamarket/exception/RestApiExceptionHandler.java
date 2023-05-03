@@ -10,9 +10,8 @@ public class RestApiExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<Object> handleApiRequestException(IllegalArgumentException ex) {
-        RestApiException restApiException = new RestApiException(ex.getMessage(),HttpStatus.BAD_REQUEST);
+        RestApiException restApiException = new RestApiException(ex.getMessage(), HttpStatus.BAD_REQUEST);
 
         return new ResponseEntity<>(restApiException, HttpStatus.BAD_REQUEST);
     }
 }
-

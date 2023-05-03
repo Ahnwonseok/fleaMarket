@@ -1,7 +1,7 @@
 package hanghae.fleamarket.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import hanghae.fleamarket.config.ConfigUtils;
+import hanghae.fleamarket.config.GoogleConfigUtils;
 import hanghae.fleamarket.dto.*;
 import hanghae.fleamarket.jwt.JwtUtil;
 import hanghae.fleamarket.service.GoogleService;
@@ -37,7 +37,7 @@ public class UserController {
     private final UserService userService;
     private final KakaoService kakaoService;
     private final GoogleService googleService;
-    private final ConfigUtils configUtils;
+    private final GoogleConfigUtils googleConfigUtils;
 
     //회원가입 페이지
     @GetMapping("/signup")
@@ -100,7 +100,7 @@ public class UserController {
     //구글 로그인 인증토큰
     @GetMapping(value = "/google/logins")
     public ResponseEntity<Object> moveGoogleInitUrl() {
-        String authUrl = configUtils.googleInitUrl();
+        String authUrl = googleConfigUtils.googleInitUrl();
         URI redirectUri = null;
         try {
             redirectUri = new URI(authUrl);

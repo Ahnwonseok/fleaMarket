@@ -54,6 +54,7 @@ public class ProductService {
         User user = findUser(username);
 
         dto.setImgUrl(imgUrl);
+        dto.setImgUrl(imgUrl);
 
         Product product = dto.toEntity(user);
         productRepository.save(product);

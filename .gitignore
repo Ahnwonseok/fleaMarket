@@ -7,7 +7,6 @@ build/
 .env
 
 ##S3
-application-secret.properties
 application.properties
 
 ### STS ###

@@ -30,7 +30,6 @@ public class SelectService {
     @Transactional //찜하기
     public boolean selectProduct(Long productId, HttpServletRequest request) {
 
-
         Claims claims = getClaims(request);
         String username = claims.getSubject();
 
@@ -56,10 +55,8 @@ public class SelectService {
             return true;
         }
 
-        log.info("현재 좋아요 했나 안했나? {}", selects.getStatus());
         // 이미 찜하기 한 상태
         if (selects.getStatus()) {
-
             selectRepository.cancelSelect(selects.getId());//찜하기 테이블 상태 false
             productRepository.cancelSelect(productId); //판매글 찜하기 갯수 -1
             return false;

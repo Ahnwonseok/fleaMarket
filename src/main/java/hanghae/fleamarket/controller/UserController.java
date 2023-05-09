@@ -70,7 +70,7 @@ public class UserController {
 
     //아이디 중복검사
     @ResponseBody
-    @PostMapping("/doublecheck")
+    @PostMapping("/doubleCheck")
     public boolean loginDoubleCheck(@RequestBody LoginDoubleCheckDto loginDoubleCheckDto){
         return userService.loginDoubleCheck(loginDoubleCheckDto);
     }
@@ -121,7 +121,7 @@ public class UserController {
 
          Cookie cookie = new Cookie(JwtUtil.AUTHORIZATION_HEADER, jwt.substring(7));
          cookie.setPath("/");
-         response.addCookie(cookie);//
+         response.addCookie(cookie);
 
         re.addAttribute("Authorization", jwt);
 

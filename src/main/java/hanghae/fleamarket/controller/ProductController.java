@@ -36,7 +36,15 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
-    //이미지업로드
+
+//    @ResponseBody
+//    @PostMapping(value = "/api/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ProductResponseDto createProduct(ProductRequestDto dto, HttpServletRequest request) throws IOException {
+//        //String imgUrl = s3Service.upload(image);
+//        return productService.createProduct(dto, request);
+//    }
+
+    //게시글 등록
     @ResponseBody
     @PostMapping(value = "/api/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ProductResponseDto createProduct(@RequestParam MultipartFile image, ProductRequestDto dto, HttpServletRequest request) throws IOException {

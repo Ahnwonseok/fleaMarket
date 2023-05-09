@@ -47,6 +47,7 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
+    //상품 게시글 작성
     @Transactional
     public ProductResponseDto createProduct(ProductRequestDto dto, HttpServletRequest request, String imgUrl) {
         Claims claims = getClaims(request);

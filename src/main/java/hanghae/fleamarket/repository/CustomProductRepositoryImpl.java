@@ -51,6 +51,21 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
     }
 
     @Override
+    public void updateCount(Product product1, boolean b) {
+        if (b) {
+            queryFactory.update(product)
+                    .set(product.selectCount, product.selectCount.add(1))
+                    .where(product.eq(product1))
+                    .execute();
+        } else {
+            queryFactory.update(product)
+                    .set(product.selectCount, product.selectCount.subtract(1))
+                    .where(product.eq(product1))
+                    .execute();
+        }
+    }
+
+    @Override
     public List<ProductResponseDto> getProducts() {
         List<Product> productList = queryFactory
                 .selectFrom(product)
@@ -64,6 +79,7 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
         for (Product product1 : productList) {
             response.add(new ProductResponseDto(product1));
         }
+
         return response;
     }
 

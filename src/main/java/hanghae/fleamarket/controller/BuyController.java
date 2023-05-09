@@ -23,7 +23,6 @@ public class BuyController {
     @GetMapping("/products/{productId}/buy")
     public ProductResponseDto getProduct(@PathVariable Long productId, HttpServletRequest request) {
         return buyService.getProduct(productId, request);
-
     }
 
     //구매하기

@@ -13,6 +13,7 @@ public interface CustomProductRepository {
 
     void soldProduct(Long productId);
 
+    void updateCount(Product product, boolean b);
 
     List<ProductResponseDto> getProducts();
 }

@@ -69,7 +69,7 @@ jobs:
       run: 
         aws deploy create-deployment \
         --application-name deploy-fleamarket \
-        --deployment-group-name deploy-fleamarket-group \
+        --deployment-group-name deploy-fleamarket-group2 \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=deploy-bukket,bundleType=zip,key=fleamarkets.zip \ 
         --region ap-northeast-2

@@ -61,7 +61,7 @@ jobs:
       run: aws s3 cp --region ap-northeast-2 ./fleamarkets.zip s3://$S3_BUCKET_NAME/
       
       
-    # Deploy
+    # Deploy 
     - name: Deploy
       run: 
         aws deploy create-deployment \ 

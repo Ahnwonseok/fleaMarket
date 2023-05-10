@@ -68,8 +68,8 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         aws deploy create-deployment \
-        --application-name coinTalk \
-        --deployment-group-name coinTalk-group \
+        --application-name fleamarket \
+        --deployment-group-name deploy-group \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=deploy-bukket,bundleType=zip,key=coinTalk.zip \ 
         --region ap-northeast-2

@@ -63,13 +63,10 @@ jobs:
       
     # Deploy
     - name: Deploy
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: 
         aws deploy create-deployment \ 
-        --application-name fleamarket \
-        --deployment-group-name deploy-group \
+        --application-name deploy-fleamarket \
+        --deployment-group-name deploy-fleamarket-group \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=deploy-bukket,bundleType=zip,key=fleamarkets.zip \ 
         --region ap-northeast-2

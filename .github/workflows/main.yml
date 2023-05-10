@@ -63,7 +63,7 @@ jobs:
       
     # Deploy 
     - name: Deploy   
-      run: |
+      run: 
         aws deploy create-deployment \
         --application-name new-deploy \
         --deployment-group-name new-deploy-group \

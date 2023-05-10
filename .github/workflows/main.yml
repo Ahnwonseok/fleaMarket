@@ -47,7 +47,7 @@ jobs:
       run: cp ./scripts/*.sh ./deploy
 
     - name: Make zip file
-      run: zip -r ./fleamarket.zip ./deploy
+      run: zip -r ./fleamarkets.zip ./deploy
       shell: bash
 
     - name: Configure AWS credentials
@@ -58,25 +58,4 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./fleamarket.zip s3://$S3_BUCKET_NAME/
-
-    - name: Deploy to AWS EC2 from S3
-      run: |
-        aws deploy create-deployment \
-          --application-name fleamarket \
-          --deployment-config-name CodeDeployDefault.AllAtOnce \
-          --deployment-group-name deploy-group \
-          --s3-location bucket=deploy-bukket,key=$GITHUB_SHA.zip,bundleType=zip
-
-#     # Deploy
-#     - name: Deploy
-#       env:
-#         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#       run: |
-#         aws deploy create-deployment \
-#         --application-name fleamarket \
-#         --deployment-group-name deploy-group \
-#         --file-exists-behavior OVERWRITE \
-#         --s3-location bucket=deploy-bukket,bundleType=zip,key=fleamarket.zip \ 
-#         --region ap-northeast-2
+      run: aws s3 cp --region ap-northeast-2 ./fleamarkets.zip s3://$S3_BUCKET_NAME/

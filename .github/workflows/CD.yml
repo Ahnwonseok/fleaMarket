@@ -6,7 +6,7 @@ on:
   push:
     branches: [ main ] # main branch로 push 될 때 실행됩니다.
 
-# 해당 yml 내에서 사용할 key - value
+# 해당 yml 내에서 사용할 key - value 
 env:
   S3_BUCKET_NAME: deploy-bukket
   PROJECT_NAME: cicdtest

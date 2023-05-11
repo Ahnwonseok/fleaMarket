@@ -61,16 +61,13 @@ jobs:
       run: aws s3 cp --region ap-northeast-2 ./coinTalk.zip s3://$S3_BUCKET_NAME/
 
 
-
-    # Deploy
-    - name: Deploy
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: |
-        aws deploy create-deployment \
-        --application-name new-deploy \
-        --deployment-group-name new-deploy-group \
-        --file-exists-behavior OVERWRITE \
-        --s3-location bucket=deploy-bukket,bundleType=zip,key=coinTalk.zip \ 
-        --region ap-northeast-2
+     # Deploy
+      - name: Deploy
+        run: |
+          aws deploy create-deployment \
+          --application-name new-deploy \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --deployment-group-name new-deploy-group \
+          --file-exists-behavior OVERWRITE \
+          --s3-location bucket=deploy-bukket,bundleType=zip,key=coinTalk.zip \ 
+          --region ap-northeast-2 \

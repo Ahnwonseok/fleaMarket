@@ -70,4 +70,4 @@ jobs:
         --deployment-group-name new-deploy-group \
         --file-exists-behavior OVERWRITE \
         --s3-location bucket=deploy-bukket,bundleType=zip,key=coinTalk.zip \ 
-          --region ap-northeast-2 \
+        --region ap-northeast-2 \

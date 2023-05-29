@@ -20,26 +20,25 @@ import java.io.IOException;
 
 @Slf4j
 @RequiredArgsConstructor
-///////JWT를 검증한다 --> 다른 모든 API요청을 할 때 마다(?)////////
+///////JWT를 검증한다 --> 모든 API요청을 할 때 마다(?)////////
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-//        System.out.println("매번 실행되나요?");
-//        String token = jwtUtil.resolveToken(request);
-//        log.info("토큰 값은 = {}", token);
-//
-//           if(token != null) {
-//            if(!jwtUtil.validateToken(token)){ //유효한 토큰이 아니면
-//                jwtExceptionHandler(response, "Token Error", HttpStatus.UNAUTHORIZED.value());
-//                return;
-//            }
-//            Claims info = jwtUtil.getUserInfoFromToken(token);
-//            //유효한 토큰임이 판정됐으면 SecurityContextHolder 객체를 생성
-//            setAuthentication(info.getSubject());
-//        } //todo 필터 안되는 문제
+        System.out.println("매번 실행되나요?");
+        String token = jwtUtil.resolveToken(request);
+        System.out.println("token: " + token);
+        if(token != null) {
+            if(!jwtUtil.validateToken(token)){ //유효한 토큰이 아니면
+                jwtExceptionHandler(response, "Token Error", HttpStatus.UNAUTHORIZED.value());
+                return;
+            }
+            Claims info = jwtUtil.getUserInfoFromToken(token);
+            //유효한 토큰임이 판정됐으면 SecurityContextHolder 객체를 생성
+            setAuthentication(info.getSubject());
+        }
         //다음 필터로
         filterChain.doFilter(request,response);
     }

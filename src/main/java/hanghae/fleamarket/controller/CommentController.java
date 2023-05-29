@@ -2,10 +2,12 @@ package hanghae.fleamarket.controller;
 
 import hanghae.fleamarket.dto.CommentRequestDto;
 import hanghae.fleamarket.dto.CommentResponseDto;
+import hanghae.fleamarket.security.UserDetailsImpl;
 import hanghae.fleamarket.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,8 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/comment/{productId}")
-    public CommentResponseDto createComment(@PathVariable Long productId, @RequestBody CommentRequestDto requestDto, HttpServletRequest request) {
+    public CommentResponseDto createComment(@PathVariable Long productId, @RequestBody CommentRequestDto requestDto, HttpServletRequest request,
+                                            @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return commentService.createComment(productId, requestDto, request);
     }
 

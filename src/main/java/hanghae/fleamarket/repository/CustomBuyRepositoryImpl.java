@@ -5,9 +5,7 @@ import hanghae.fleamarket.dto.BuyResponseDto;
 import hanghae.fleamarket.entity.Buy;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static hanghae.fleamarket.entity.QBuy.buy;
 import static hanghae.fleamarket.entity.QProduct.product;

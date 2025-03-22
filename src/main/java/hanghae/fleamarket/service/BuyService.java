@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -88,6 +87,7 @@ public class BuyService {
         for (Buy buy : buyList) {
             response.add(new BuyResponseDto(buy));
         }
+
         return response;
     }
     //제품 검색

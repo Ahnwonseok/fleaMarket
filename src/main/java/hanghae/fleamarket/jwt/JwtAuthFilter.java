@@ -3,11 +3,6 @@ package hanghae.fleamarket.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hanghae.fleamarket.dto.SecurityExceptionDto;
 import io.jsonwebtoken.Claims;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,6 +11,10 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
@@ -45,7 +44,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     public void setAuthentication(String username) {
         //SecurityContextHolder 객체를 생성
-        Authentication authentication = jwtUtil.createAuthentication(username); //Authentication 반환
+        Authentication authentication = jwtUtil.        createAuthentication(username); //Authentication 반환
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(authentication);
         SecurityContextHolder.setContext(context);

@@ -7,11 +7,6 @@ import hanghae.fleamarket.jwt.JwtUtil;
 import hanghae.fleamarket.service.GoogleService;
 import hanghae.fleamarket.service.KakaoService;
 import hanghae.fleamarket.service.UserService;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +17,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -47,7 +46,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/signup")
-    public String signup(@Valid @RequestBody SignupRequestDto signupRequestDto) {
+    public String signup(@Valid SignupRequestDto signupRequestDto) {
         log.info("signup 실행");
         userService.signup(signupRequestDto);
         return "success";
@@ -107,6 +106,7 @@ public class UserController {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setLocation(redirectUri);
             return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
+
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
